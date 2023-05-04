@@ -1,0 +1,87 @@
+[2023-05-02 23:03:01,359] ERROR log_exception() L1744 Exception on /despesas [GET] - call_trace=C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py L1744
+Traceback (most recent call last):
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask_openapi3\scaffold.py", line 104, in view_func
+    response = func(**result)
+               ^^^^^^^^^^^^^^
+  File "C:\Users\di-si\Documents\meu_mvp\meu_app_api\app.py", line 314, in get_despesas
+    despesas = session.query(Despesa).filter(Despesa.id_proc == None).all()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 2697, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 2855, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2229, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2114, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1981, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 1108, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 3251, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 3275, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\pool\base.py", line 455, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\pool\base.py", line 1271, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\pool\base.py", line 719, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\pool\impl.py", line 157, in _do_get
+    raise exc.TimeoutError(
+sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
+[2023-05-02 23:03:01,502] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:03:01] "[35m[1mGET /receitas HTTP/1.1[0m" 500 - - call_trace=C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:03:01,526] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:03:01] "[35m[1mGET /despesas HTTP/1.1[0m" 500 - - call_trace=C:\Users\di-si\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:29,991] INFO _log() L224  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.106:5000 - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:29,993] INFO _log() L224  [33mPress CTRL+C to quit[0m - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:38,243] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:38] "GET /receitas HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:38,246] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:38] "GET /despesas HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:42,034] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:42] "GET /receitas HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:42,037] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:42] "GET /despesas HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:48,774] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:48] "GET /processado_periodo?datainicio=2023-05-01&datafim=2023-05-31 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:50,417] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:50] "GET /processado_periodo?datainicio=2023-05-01&datafim=2023-05-31 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:04:53,379] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:04:53] "GET /processado_periodo?datainicio=2023-05-01&datafim=2023-05-31 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:01,447] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:01] "GET /processado_periodo?datainicio=2023-04-01&datafim=2023-04-30 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:11,571] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:11] "GET /processado_periodo?datainicio=2023-04-01&datafim=2023-05-31 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:16,211] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:16] "OPTIONS /processar_deletar?id_proc=1 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:16,233] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:16] "DELETE /processar_deletar?id_proc=1 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:17,812] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:17] "POST /despesa_update_idProc_vazio?id_proc=1 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:17,823] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:17] "GET /receitas HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-05-02 23:05:17,832] INFO _log() L224  127.0.0.1 - - [02/May/2023 23:05:17] "POST /receita_update_idProc_vazio?id_proc=1 HTTP/1.1" 200 - - call_trace=C:\Users\di-si\Desktop\Pos-Graduação\meu_mvp\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
